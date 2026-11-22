@@ -1,0 +1,15 @@
+PASS "improve my resume" resume
+PASS "technical interview questions" interview
+PASS "git commit code" git
+PASS "python lists and functions" python
+PASS "sql join tables" sql
+PASS "unit tests edge cases" testing
+PASS "entry level software jobs" jobsearch
+PASS "docker cloud deployment" cloud
+PASS "portfolio project screenshots" portfolio
+PASS "what is the capital of Iceland" unknown
+PASS "" unknown
+PASS "<script>alert(1)</script>" unknown
+12 tests passed.
+
+Browser preview checks: AI submit, unknown response and reset; Focus Board add, complete, filter and delete; 294-word About section; mobile width check. Preview rendered with local assets inlined because direct file/localhost navigation was unavailable. Live navigation, external links and actual browser persistence remain to be tested after publication.

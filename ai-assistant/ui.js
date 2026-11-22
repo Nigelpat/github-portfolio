@@ -1,0 +1,4 @@
+const chat=document.querySelector('#chat'),question=document.querySelector('#question');const initial=chat.innerHTML;
+function message(role,label,text){const div=document.createElement('div');div.className='message '+role;const title=document.createElement('small');title.textContent=label;div.append(title,document.createTextNode(text));chat.append(div);chat.scrollTop=chat.scrollHeight;}
+function ask(q){const v=q.trim();if(!v)return;message('user','You',v);const result=classify(v);message('bot','Career Coach'+(result.id==='unknown'?' / clarification':' / '+result.id),result.answer);question.value='';question.focus();}
+document.querySelector('#form').addEventListener('submit',e=>{e.preventDefault();ask(question.value)});document.querySelectorAll('.chips button').forEach(b=>b.addEventListener('click',()=>ask(b.textContent)));document.querySelector('#clear').addEventListener('click',()=>{chat.innerHTML=initial;question.value='';question.focus()});

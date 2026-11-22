@@ -1,0 +1,2 @@
+# Focus Board
+A new AI-assisted personal project prototype: a browser task tracker written in HTML, CSS and JavaScript. Add tasks, toggle completion, filter by completion, and delete. Browser localStorage persists task state when available. No backend or account. Open index.html or serve the portfolio root. Test adding a task, marking it done, filtering, reloading and deleting. Task text is displayed as text, not HTML.

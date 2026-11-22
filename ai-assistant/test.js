@@ -1,0 +1,3 @@
+const assert=require('node:assert/strict');const {classify}=require('./model.js');
+const cases=[['improve my resume','resume'],['technical interview questions','interview'],['git commit code','git'],['python lists and functions','python'],['sql join tables','sql'],['unit tests edge cases','testing'],['entry level software jobs','jobsearch'],['docker cloud deployment','cloud'],['portfolio project screenshots','portfolio'],['what is the capital of Iceland','unknown'],['','unknown'],['<script>alert(1)</script>','unknown']];
+for(const [q,expected] of cases){const result=classify(q);assert.equal(result.id,expected,q);console.log('PASS',JSON.stringify(q),result.id)}console.log(`${cases.length} tests passed.`);
