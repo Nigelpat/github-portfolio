@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Community Garden Announcements</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.post{
+border:1px solid #ccc;
+padding:15px;
+margin-bottom:10px;
+background:#f4f4f4;
+}
+
+textarea{
+width:100%;
+height:100px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="login.html">Login</a>
+<a href="payment.html">Payment</a>
+<a href="plots.html">Plots</a>
+<a href="Calendar.html">Calendar</a>
+<a href="qa.html">Q&A</a>
+<a href="messages.html">Messages</a>
+<a href="contact.html">Contact</a>
+<a href="about.html">About</a>
+<a href="manager.html" id="managerLink" style="display:none;">Approval</a>
+<a href="control.html" id="controlLink" style="display:none;">Control</a>
+</nav>
+
+<div class="container">
+
+<h1>Garden Announcements</h1>
+
+<div id="postPanel" style="display:none;">
+
+<h3>Post Announcement</h3>
+
+<textarea id="messageText" placeholder="Write announcement..."></textarea>
+<br><br>
+
+<button onclick="postAnnouncement()">Post</button>
+
+<hr>
+
+</div>
+
+<div id="board"></div>
+
+</div>
+
+<script src="script.js"></script>
+
+<script>
+
+window.onload = function(){
+
+    checkLogin();
+    loadBoard();
+    checkPostingAccess();
+
+};
+
+// check if user can post
+function checkPostingAccess(){
+
+    const users = getUsers();
+    const currentUser = localStorage.getItem("loggedInUser");
+
+    if(!currentUser || !users[currentUser]) return;
+
+    const role = users[currentUser].role;
+
+    if(role === "manager" || role === "committee"){
+        document.getElementById("postPanel").style.display = "block";
+    }
+}
+
+// load announcements
+function loadBoard(){
+
+    const board = document.getElementById("board");
+
+    let posts = JSON.parse(localStorage.getItem("announcements")) || [];
+
+    board.innerHTML = "";
+
+    posts.slice().reverse().forEach(post => {
+
+        board.innerHTML += `
+        <div class="post">
+        <b>${post.user}</b> - ${post.date}<br><br>
+        ${post.text}
+        </div>
+        `;
+    });
+}
+
+// create announcement
+function postAnnouncement(){
+
+    const text = document.getElementById("messageText").value.trim();
+
+    if(!text){
+        alert("Enter a message.");
+        return;
+    }
+
+    const user = localStorage.getItem("loggedInUser");
+
+    let posts = JSON.parse(localStorage.getItem("announcements")) || [];
+
+    posts.push({
+        user:user,
+        text:text,
+        date:new Date().toLocaleString()
+    });
+
+    localStorage.setItem("announcements",JSON.stringify(posts));
+
+    document.getElementById("messageText").value="";
+
+    loadBoard();
+}
+
+</script>
+
+</body>
+</html>

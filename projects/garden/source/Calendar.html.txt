@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Garden Calendar</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+       .wrapper { display:flex; max-width:900px; margin:auto; }
+        .calendar-container { flex: 2; }
+        table { width:100%; border-collapse:collapse; }
+        th, td { border:1px solid #ccc; padding:10px; text-align:center; cursor:pointer; }
+        td.today { background:green; color:white; }
+        td.occupied { background:black; color:white; }
+        td:hover { background:#ddd; }
+
+        .panel {
+            flex:1;
+            margin-left:20px;
+            background:white;
+            padding:15px;
+            border-radius:8px;
+            box-shadow:0 0 10px rgba(0,0,0,0.2);
+            min-height:300px;
+        }
+
+        #panel h3 { margin-top:0; }
+        #panel input, #panel textarea { width:100%; margin:5px 0; padding:8px; }
+        #panel button { padding:8px 12px; margin-top:5px; cursor:pointer; }
+    </style>
+</head>
+<body onload="checkLogin();checkCalendarAccess();generateCalendar();">
+
+<nav>
+<a href="index.html">Home</a>
+<a href="login.html">Login</a>
+<a href="payment.html">Payment</a>
+<a href="plots.html">Plots</a>
+<a href="Calendar.html">Calendar</a>
+<a href="qa.html">Q&A</a>
+<a href="messages.html">Messages</a>
+<a href="contact.html">Contact</a>
+<a href="about.html">About</a>
+<a href="manager.html" id="managerLink" style="display:none;">Approval</a>
+<a href="control.html" id="controlLink" style="display:none;">Control</a>
+</nav>
+<script src="script.js"></script>
+<div class="wrapper">
+    <div class="calendar-container">
+        <h1 id="monthYear"></h1>
+        <table id="calendar"></table>
+    </div>
+
+    <div class="panel" id="panel">
+        <h3>Assign Caretaker/Time</h3>
+        <p id="selectedDay">Click a day to assign</p>
+        <input type="text" id="caretaker" placeholder="Caretaker Name">
+        <input type="text" id="timeSlot" placeholder="Time Slot">
+        <button onclick="assignSlot()">Assign</button>
+        <button onclick="removeSlot()">Remove</button>
+    </div>
+</div>
+
+<script>
+// Require login
+const user = localStorage.getItem("loggedInUser");
+if(!user){
+    alert("You must be logged in to access this page!");
+    window.location.href = "login.html";
+}
+const calendarDataKey = "calendarSlots";
+let selectedKey = null;
+
+// Load/Save Slots
+function loadSlots() { return JSON.parse(localStorage.getItem(calendarDataKey) || "{}"); }
+function saveSlots(slots) { localStorage.setItem(calendarDataKey, JSON.stringify(slots)); }
+
+// Generate calendar
+function generateCalendar() {
+    const calendar = document.getElementById("calendar");
+    const monthYear = document.getElementById("monthYear");
+
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    const today = date.getDate();
+
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month+1,0).getDate();
+    const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    monthYear.innerText = months[month]+" "+year;
+
+    const days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+    let table = "<tr>";
+    for(let d of days) table += "<th>"+d+"</th>";
+    table += "</tr><tr>";
+
+    let dayCount = 0;
+    const slots = loadSlots();
+
+    for(let i=0;i<firstDay;i++){ table += "<td></td>"; dayCount++; }
+
+    for(let day=1; day<=daysInMonth; day++){
+        if(dayCount%7===0 && day!==1) table += "</tr><tr>";
+        const key = `${year}-${month+1}-${day}`;
+        let classes = "";
+        if(day===today) classes+="today ";
+        if(slots[key]) classes+="occupied";
+        table += `<td class="${classes.trim()}" onclick="selectDay('${key}', ${day})" data-key="${key}">${day}</td>`;
+        dayCount++;
+    }
+    table += "</tr>";
+    calendar.innerHTML = table;
+}
+
+// Select a day
+function selectDay(key, day){
+    selectedKey = key;
+    const slots = loadSlots();
+    const panel = document.getElementById("panel");
+    document.getElementById("selectedDay").innerText = `Selected: ${day}`;
+    if(slots[key]){
+        document.getElementById("caretaker").value = slots[key].split(" | ")[0];
+        document.getElementById("timeSlot").value = slots[key].split(" | ")[1];
+    } else {
+        document.getElementById("caretaker").value = "";
+        document.getElementById("timeSlot").value = "";
+    }
+}
+
+// Assign slot
+function assignSlot(){
+    if(!selectedKey){ alert("Select a day first!"); return; }
+    const caretaker = document.getElementById("caretaker").value.trim();
+    const timeSlot = document.getElementById("timeSlot").value.trim();
+    if(!caretaker || !timeSlot){ alert("Enter caretaker and time."); return; }
+
+    const slots = loadSlots();
+    slots[selectedKey] = `${caretaker} | ${timeSlot}`;
+    saveSlots(slots);
+    generateCalendar();
+}
+
+// Remove slot
+function removeSlot(){
+    if(!selectedKey){ alert("Select a day first!"); return; }
+    const slots = loadSlots();
+    if(slots[selectedKey]){
+        delete slots[selectedKey];
+        saveSlots(slots);
+        generateCalendar();
+        document.getElementById("caretaker").value="";
+        document.getElementById("timeSlot").value="";
+    }
+}
+
+generateCalendar();
+
+
+</script>
+
+</body>
+</html> 

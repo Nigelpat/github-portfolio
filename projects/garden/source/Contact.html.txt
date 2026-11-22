@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="login.html">Login</a>
+<a href="payment.html">Payment</a>
+<a href="plots.html">Plots</a>
+<a href="Calendar.html">Calendar</a>
+<a href="qa.html">Q&A</a>
+<a href="messages.html">Messages</a>
+<a href="contact.html">Contact</a>
+<a href="about.html">About</a>
+<a href="manager.html" id="managerLink" style="display:none;">Approval</a>
+<a href="control.html" id="controlLink" style="display:none;">Control</a>
+</nav>
+
+<!--NOTE:phone number should not actually work-->
+<div class="container">
+    <h1>Contact Page</h1>
+	<p>Phone number: <a href="Tel:+1409">+1 (409)-777-7777</a></p>
+    <a href="https://outlook.live.com">example@outlook.com</a>
+</div>
+
+</body>
+<script src="script.js"></script>
+</html>

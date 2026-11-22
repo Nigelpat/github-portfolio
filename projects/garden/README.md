@@ -1,2 +1,12 @@
-# Community Garden Management System — academic case study
-This folder presents a reconstructed portfolio case study of the team software engineering project described in Assignment 3. Patrick's documented contributions include requirements analysis, process diagrams, role-based features, scheduling, announcements, payment workflows, testing and team coordination. The included diagram is a conceptual reconstruction, not the original team application's screenshot or code. Before final submission, replace or supplement it with an authorized original course screenshot and repository link if available. Do not publish classmates' private code or information without permission.
+# Community Garden Management System
+
+CPSC 4360 Software Engineering, Lamar University, Spring 2026. Team project; Patrick Nanlohy served as documentation lead.
+
+The original browser-based prototype combines garden plot tracking, role-based workflows, scheduling, announcements and simulated payments. Technologies: HTML, CSS, JavaScript, localStorage and proposed SQL schema.
+
+- `index.html`: portfolio case study and original project evidence.
+- `home.png`, `plots.png`, `calendar.png`, `qa.png`: crops of original report Figure 4, excluding browser chrome and contact details.
+- `uml.png`, `er.png`: original design figures from the report.
+- `source/`: readable source files with demo credential redaction; not a deployable production application.
+
+The original report (which contains student IDs and private collaboration details) is not included. Review permissions before publicly sharing team artifacts.

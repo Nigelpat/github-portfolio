@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Manager Control Panel</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+th,td{
+border:1px solid #ccc;
+padding:10px;
+text-align:center;
+}
+
+button{
+padding:6px 10px;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="login.html">Login</a>
+<a href="payment.html">Payment</a>
+<a href="plots.html">Plots</a>
+<a href="Calendar.html">Calendar</a>
+<a href="qa.html">Q&A</a>
+<a href="messages.html">Messages</a>
+<a href="contact.html">Contact</a>
+<a href="about.html">About</a>
+<a href="manager.html" id="managerLink" style="display:none;">Approval</a>
+<a href="control.html" id="controlLink" style="display:none;">Control</a>
+</nav>
+<script src="script.js"></script>
+<div class="container">
+
+<h1>Manager Dashboard</h1>
+
+<h2>Registered Users</h2>
+
+<table id="userTable">
+
+<tr>
+<th>Username</th>
+<th>Email</th>
+<th>Role</th>
+<th>Action</th>
+</tr>
+
+</table>
+
+</div>
+
+
+<script>
+function loadUsers(){
+    let users = getUsers();
+    const table = document.getElementById("userTable");
+
+    // Clear previous rows
+    while(table.rows.length > 1){
+        table.deleteRow(1);
+    }
+
+    for(let username in users){
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+		<td>${username}</td>
+        <td>${users[username].email || "-"}</td>
+        <td>${users[username].role || "user"}</td>
+        <td>
+            ${username !== "manager" ? `
+            <button onclick="makeCommittee('${username}')">Make Committee</button>
+            <button onclick="deleteUser('${username}')">Remove</button>` : "-"}
+        </td>
+        `;
+        table.appendChild(row);
+    }
+}
+
+function makeCommittee(username){
+
+    if(username === "manager"){
+        alert("Manager already has full access.");
+        return;
+    }
+
+    let users = getUsers();
+
+    users[username].role = "committee";
+
+    saveUsers(users);
+
+    alert(username + " is now a committee member.");
+
+    location.reload();
+}
+
+function deleteUser(username){
+
+    if(username === "manager"){
+        alert("Manager account cannot be removed.");
+        return;
+    }
+
+    if(confirm("Delete user: "+username+" ?")){
+
+        let users = getUsers();
+
+        delete users[username];
+
+        saveUsers(users);
+
+        alert("User removed.");
+
+        location.reload();
+    }
+}
+</script>
+
+</body>
+</html>

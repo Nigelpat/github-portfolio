@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Payment</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="checkLogin()">
+
+<nav>
+<a href="index.html">Home</a>
+<a href="login.html">Login</a>
+<a href="payment.html">Payment</a>
+<a href="plots.html">Plots</a>
+<a href="Calendar.html">Calendar</a>
+<a href="qa.html">Q&A</a>
+<a href="messages.html">Messages</a>
+<a href="contact.html">Contact</a>
+<a href="about.html">About</a>
+<a href="manager.html" id="managerLink" style="display:none;">Approval</a>
+<a href="control.html" id="controlLink" style="display:none;">Control</a>
+</nav>
+<script src="script.js"></script>
+<div class="container">
+
+<h1>Payment Portal</h1>
+
+<input id="name" placeholder="Name on Card"><br><br>
+<input id="card" placeholder="Card Number"><br><br>
+<input id="amount" placeholder="Amount ($)"><br><br>
+
+<button onclick="submitPayment()">Pay Now</button>
+
+<br><br>
+
+<button onclick="logoutUser()">Logout</button>
+
+<p><b>NOTE:</b> Simulated payment system.</p>
+
+</div>
+<script>
+loadRequests();
+</script>
+</body>
+</html>

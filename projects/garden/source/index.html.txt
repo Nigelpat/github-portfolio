@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<nav>
+<a href="index.html">Home</a>
+<a href="login.html">Login</a>
+<a href="payment.html">Payment</a>
+<a href="plots.html">Plots</a>
+<a href="Calendar.html">Calendar</a>
+<a href="qa.html">Q&A</a>
+<a href="messages.html">Messages</a>
+<a href="contact.html">Contact</a>
+<a href="about.html">About</a>
+<a href="manager.html" id="managerLink" style="display:none;">Approval</a>
+<a href="control.html" id="controlLink" style="display:none;">Control</a>
+</nav>
+
+    <div class="home">
+        <h1>Welcome to the Community Garden</h1>
+
+<p>
+Our Community Garden is a shared space where neighbors come together to grow
+fresh food, learn about sustainable gardening, and build stronger connections
+within the community. Whether you are an experienced gardener or just getting
+started, our garden provides a welcoming environment for everyone to participate.
+</p>
+
+<p>
+This Community Garden Management System makes it easy to stay connected and
+organized. Gardeners can create accounts, apply for plots, manage schedules,
+submit payments, and communicate with garden administrators all in one place.
+</p>
+
+<h3>
+Join our growing community and help us cultivate a greener, healthier
+neighborhood!
+</h3>
+    </div>
+
+</body>
+<script src="script.js"></script>
+</html>

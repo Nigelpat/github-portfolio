@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>QA</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<meta charset="UTF-8">
+
+<style>
+.container{
+    max-width:600px;
+    margin:auto;
+}
+
+.question{
+    background:#3b4e09;
+    color:white;
+    padding:12px;
+    margin-top:10px;
+    cursor:pointer;
+    border-radius:5px;
+}
+
+.answer{
+    display:none;
+    background:white;
+    padding:12px;
+    border:1px solid #ccc;
+    border-top:none;
+}
+</style>
+</head>
+</div>
+<nav>
+<a href="index.html">Home</a>
+<a href="login.html">Login</a>
+<a href="payment.html">Payment</a>
+<a href="plots.html">Plots</a>
+<a href="Calendar.html">Calendar</a>
+<a href="qa.html">Q&A</a>
+<a href="messages.html">Messages</a>
+<a href="contact.html">Contact</a>
+<a href="about.html">About</a>
+<a href="manager.html" id="managerLink" style="display:none;">Approval</a>
+<a href="control.html" id="controlLink" style="display:none;">Control</a>
+</nav>
+<body>
+
+<div class="container">
+<h2>Q & A</h2>
+
+<div class="question" onclick="toggleAnswer('a1')">
+Where is the compost bin found at?
+</div>
+<div id="a1" class="answer">
+To the left near the gate.
+</div>
+
+<div class="question" onclick="toggleAnswer('a2')">
+How to till the soil?
+</div>
+<div id="a2" class="answer">
+There are provided garden rotarys and hoes in the shed.
+</div>
+
+<div class="question" onclick="toggleAnswer('a3')">
+Are tools provided?
+</div>
+<div id="a3" class="answer">
+Basic gardening tools such as shovels, rakes, rotarys, hoes, and watering cans are
+available for community use. However, gardeners are encouraged to bring
+their own gloves and personal tools if they prefer. All shared tools should
+be cleaned and returned after use so everyone can benefit from them.
+</div>
+
+<div class="question" onclick="toggleAnswer('a4')">
+What are the best plants for each season?
+</div>
+<div id="a4" class="answer">
+Plant choices depend on the season. In spring, popular plants include lettuce,
+spinach, carrots, and peas. Summer is ideal for tomatoes, peppers, cucumbers,
+and squash. In the fall, many gardeners grow broccoli, kale, and cabbage.
+</div>
+
+<div class="question" onclick="toggleAnswer('a5')">
+How do I apply for a garden plot?
+</div>
+<div id="a5" class="answer">
+To apply for a garden plot, create an account and submit a lease application through
+the "Plot" page.
+</div>
+
+<div class="question" onclick="toggleAnswer('a6')">
+What happens if I cannot maintain my plot for a period of time?
+</div>
+<div id="a6" class="answer">
+If you are unable to care for your plot temporarily, you can schedule a caretaker
+using the garden calendar or notify the garden administrator.
+</div>
+
+
+<script>
+function toggleAnswer(id){
+    var x = document.getElementById(id);
+    if(x.style.display === "block"){
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
+}
+</script>
+<script src="script.js"></script>
+</body>
+</html>

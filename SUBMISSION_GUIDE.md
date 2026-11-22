@@ -3,7 +3,7 @@
 ## Before uploading
 1. Your supplied professional photograph is already included at `assets/profile.jpg`. No replacement is needed.
 2. The resume has been confirmed by the student. Review the portfolio and update certifications if you have any. Do not claim unearned certificates. Review the About Me text for accuracy.
-3. Add a genuine Community Garden course project screenshot and an authorized GitHub project link if you have them. Replace the existing conceptual screenshot and its caption in `index.html` as appropriate; it currently shows a reconstructed case study only. If you use another course project instead, update the title, description, stack, screenshot and link. Verify the Snake Arcade and Mount Sahara links.
+3. The Community Garden case study now includes original screenshots, diagrams and source excerpts. Confirm team/course permission to share and verify the links. Verify the Snake Arcade and Mount Sahara links.
 4. Open the AI demo and Focus Board. Run `node ai-assistant/test.js` if Node is installed. Review the implementation and be ready to explain the classifier. Add your own actual development/testing notes to the AI prompt log (do not invent a prompt history).
 
 ## Publish using GitHub in your browser

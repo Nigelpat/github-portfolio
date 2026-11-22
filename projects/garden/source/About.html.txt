@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="login.html">Login</a>
+<a href="payment.html">Payment</a>
+<a href="plots.html">Plots</a>
+<a href="Calendar.html">Calendar</a>
+<a href="qa.html">Q&A</a>
+<a href="messages.html">Messages</a>
+<a href="contact.html">Contact</a>
+<a href="about.html">About</a>
+<a href="manager.html" id="managerLink" style="display:none;">Approval</a>
+<a href="control.html" id="controlLink" style="display:none;">Control</a>
+</nav>
+
+<div class="container">
+   <h2>About Our Garden</h2>
+<p>
+The Community Garden Management System was created to help organize and support
+local gardeners who share a passion for growing food, flowers, and community.
+Our goal is to provide an easy way for gardeners and administrators to manage
+garden plots, schedule garden use, communicate with members, and keep the
+garden thriving.
+</p>
+
+<h2>Our Mission</h2>
+<p>
+Our mission is to promote sustainable gardening, community engagement, and
+environmental awareness. By bringing people together through gardening,
+we help build stronger neighborhoods and encourage healthy living.
+</p>
+
+<h2>What This System Provides</h2>
+<ul>
+<li>Create and manage gardener accounts</li>
+<li>Submit lease applications for garden plots</li>
+<li>Priority-based plot assignment</li>
+<li>Calendar scheduling for garden access and caretaking</li>
+<li>Online payment tracking for plot leases</li>
+<li>Email communication between gardeners and administrators</li>
+<li>Question and answer forms to gather gardener feedback</li>
+<li>Interactive garden layout and plot management</li>
+</ul>
+
+<h2>Get Involved</h2>
+<p>
+Whether you are an experienced gardener or just getting started, our
+community garden welcomes everyone. Apply for a plot, volunteer, or
+participate in community gardening events to help make our garden grow.
+</p>
+</div>
+<footer>
+<p>© 2026 Community Garden Management System</p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
